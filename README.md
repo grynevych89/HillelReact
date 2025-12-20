@@ -12,7 +12,7 @@ Educational project demonstrating the creation and usage of React Button and Inp
 
 1. Clone the repository:
 ```bash
-git clone [your-repo-url]
+git clone https://github.com/grynevych89/HillelReact.git
 ```
 
 2. Install dependencies:
