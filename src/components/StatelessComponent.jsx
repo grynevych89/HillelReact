@@ -3,8 +3,8 @@ const StatelessComponent = ({
     description = 'No description provided',
     items = [],
     status = 'inactive',
-    author,
-    date
+    author = 'Anonymous',
+    date = new Date().toLocaleDateString()
 }) => {
 
     const getStatusColor = (status) => {
@@ -35,13 +35,7 @@ const StatelessComponent = ({
                 <div className="card-header">
                     <div>
                         <h3>{title}</h3>
-                        {(author || date) && (
-                            <p className="card-meta">
-                                {author && `By ${author}`}
-                                {author && date && ' • '}
-                                {date}
-                            </p>
-                        )}
+                        <p className="card-meta">By {author} • {date}</p>
                     </div>
                     <span
                         className="status-badge"
