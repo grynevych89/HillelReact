@@ -1,7 +1,7 @@
 # React Homework
 
 ## Project Description
-Educational project demonstrating React component creation with different approaches: functional components with hooks, stateless components, and class-based components.
+Educational project demonstrating React component creation with different approaches: functional components with hooks, stateless components, class-based components, controlled and uncontrolled forms, and asynchronous data fetching.
 
 ## Technologies
 - React 18
@@ -40,6 +40,9 @@ http://localhost:5173
 - Todo list with localStorage persistence
 - Real-time counter and timer
 - Interactive UI with smooth animations
+- Controlled form with useState (text, email, select, checkbox)
+- Uncontrolled form with useRef (values read on submit, no state)
+- Asynchronous data fetching with useEffect, loading/error/success states
 
 ## Components
 
@@ -74,6 +77,24 @@ http://localhost:5173
 - Real-time lifecycle logs
 - State management with this.setState
 
+## Components
+
+### ControlledForm
+- Controlled component — all form values managed by `useState`
+- Fields: text input, email, select, checkbox
+- Submit disabled until terms are accepted
+- Displays submitted data as JSON
+
+### UncontrolledForm
+- Uncontrolled component — values accessed via `useRef` on submit
+- No state used for form fields; DOM is the source of truth
+- Resets form via `e.target.reset()` after submission
+
+### PostsFeed
+- Fetches 5 posts from `jsonplaceholder.typicode.com` using `useEffect`
+- Handles three states: loading, error (with retry button), success
+- Cleanup function prevents state updates on unmounted component
+
 ## Project Structure
 ```
 src/
@@ -82,7 +103,10 @@ src/
 │   ├── Input.jsx
 │   ├── StatefulComponent.jsx
 │   ├── StatelessComponent.jsx
-│   └── ClassComponent.jsx
+│   ├── ClassComponent.jsx
+│   ├── ControlledForm.jsx
+│   ├── UncontrolledForm.jsx
+│   └── PostsFeed.jsx
 ├── App.jsx
 ├── App.css
 └── main.jsx

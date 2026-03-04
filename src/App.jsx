@@ -1,73 +1,35 @@
 import { useState } from 'react';
-import Button from './components/Button';
-import Input from './components/Input';
-import StatefulComponent from './components/StatefulComponent';
-import StatelessComponent from './components/StatelessComponent';
-import ClassComponent from './components/ClassComponent';
+import AccordionSection from './components/AccordionSection';
+import DZ39 from './pages/DZ39';
+import DZ40 from './pages/DZ40';
 import './App.css';
 
+const sections = [
+  { key: 'dz40', title: 'DZ 40 — Controlled, Uncontrolled Forms & Fetch', Component: DZ40 },
+  { key: 'dz39', title: 'DZ 39 — Components: Stateful, Stateless, Class', Component: DZ39 },
+];
+
 function App() {
-  const [inputValue, setInputValue] = useState('');
+  const [openSections, setOpenSections] = useState(['dz40']);
 
-  const handleInputChange = (e) => {
-    setInputValue(e.target.value);
-  };
-
-  const handleButtonClick = () => {
-    alert(`You entered: ${inputValue}`);
-  };
-
-  const handleClear = () => {
-    setInputValue('');
-  };
+  const toggle = (key) =>
+    setOpenSections((prev) =>
+      prev.includes(key) ? prev.filter((k) => k !== key) : [...prev, key]
+    );
 
   return (
     <div className="app">
       <h1>React Homeworks</h1>
-
-      {/* Original components */}
-      <div className="section">
-        <h2>Basic Input & Button</h2>
-        <div className="input-group">
-          <Input
-            placeholder="Enter text"
-            type="text"
-            onChange={handleInputChange}
-            value={inputValue}
-          />
-          <Button
-            text="Clear"
-            type="button"
-            onClick={handleClear}
-            className="btn-clear"
-          />
-        </div>
-        <Button
-          text="Submit"
-          type="button"
-          onClick={handleButtonClick}
-        />
-      </div>
-
-      {/* Stateful Component */}
-      <div className="section">
-        <StatefulComponent />
-      </div>
-
-      {/* Stateless Component */}
-      <div className="section">
-        <StatelessComponent
-          title="Project Dashboard"
-          description="This is a stateless component that only receives and displays props. It has no internal state."
-          items={['Complete homework', 'Study React hooks', 'Build project', 'Deploy to Vercel']}
-          status="active"
-        />
-      </div>
-
-      {/* Class Component (optional) */}
-      <div className="section">
-        <ClassComponent />
-      </div>
+      {sections.map((section) => (
+        <AccordionSection
+          key={section.key}
+          title={section.title}
+          isOpen={openSections.includes(section.key)}
+          onToggle={() => toggle(section.key)}
+        >
+          <section.Component />
+        </AccordionSection>
+      ))}
     </div>
   );
 }
