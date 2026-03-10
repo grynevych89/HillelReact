@@ -2,11 +2,12 @@
 
 ## Project Description
 
-Educational project demonstrating React concepts across multiple homework assignments: functional components with hooks, class-based components, controlled and uncontrolled forms, async data fetching, the `use()` hook with Suspense, and Axios integration.
+Educational project demonstrating React concepts across multiple homework assignments: functional components with hooks, class-based components, controlled and uncontrolled forms, async data fetching, the `use()` hook with Suspense, Axios integration, and client-side routing with React Router.
 
 ## Technologies
 
 - React 19
+- React Router 7
 - Vite
 - Axios
 - JavaScript/JSX
@@ -65,11 +66,36 @@ http://localhost:5173
 - Handles loading / error / success states
 - Refetches automatically when `id` prop changes (arrow navigation ← →)
 
+### DZ 43 — React Router: BrowserRouter, NavLink, createBrowserRouter
+
+- Client-side routing with `createBrowserRouter` + `RouterProvider` (modern object-based approach)
+- Routes: `/` → Home, `/about` → About, `/contact` → Contact, `/homeworks` → Homeworks
+- `NavLink` with active class highlighting via `className` callback
+- Dynamic navigation generated from a `navLinks` array of objects
+- Shared layout with `Outlet` for nested routes
+- `Navbar` and `Footer` extracted into separate layout components
+- `useNavigate(-1)` for browser-history back navigation
+
 ## Project Structure
 
 ```
 src/
-├── components/
+├── layouts/
+│   ├── Layout.jsx       — shared page wrapper
+│   ├── Navbar.jsx       — navigation with NavLinks
+│   └── Footer.jsx       — copyright + site link
+├── pages/
+│   ├── Home.jsx         — /
+│   ├── About.jsx        — /about
+│   ├── Contact.jsx      — /contact
+│   ├── Homeworks.jsx    — /homeworks
+│   └── dz/
+│       ├── DZ39.jsx
+│       ├── DZ40.jsx
+│       ├── DZ41.jsx
+│       ├── DZ42.jsx
+│       └── DZ43.jsx
+├── components/          — reusable UI components
 │   ├── AccordionSection.jsx
 │   ├── Button.jsx
 │   ├── ClassComponent.jsx
@@ -83,12 +109,7 @@ src/
 │   ├── StatefulComponent.jsx
 │   ├── StatelessComponent.jsx
 │   └── UncontrolledForm.jsx
-├── pages/
-│   ├── DZ39.jsx
-│   ├── DZ40.jsx
-│   ├── DZ41.jsx
-│   └── DZ42.jsx
-├── App.jsx
-├── App.css
-└── main.jsx
+├── router.jsx           — createBrowserRouter config
+├── App.jsx              — RouterProvider entry point
+└── App.css
 ```

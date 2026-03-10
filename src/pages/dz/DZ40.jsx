@@ -1,6 +1,6 @@
-import ControlledForm from '../components/ControlledForm';
-import UncontrolledForm from '../components/UncontrolledForm';
-import PostsFeed from '../components/PostsFeed';
+import ControlledForm from '../../components/ControlledForm';
+import UncontrolledForm from '../../components/UncontrolledForm';
+import PostsFeed from '../../components/PostsFeed';
 
 function DZ40() {
   return (

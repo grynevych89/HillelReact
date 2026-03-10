@@ -1,7 +1,7 @@
 import { Suspense, useState } from 'react';
-import MessageComponent from '../components/MessageComponent';
-import ErrorBoundary from '../components/ErrorBoundary';
-import CountdownFallback from '../components/CountdownFallback';
+import MessageComponent from '../../components/MessageComponent';
+import ErrorBoundary from '../../components/ErrorBoundary';
+import CountdownFallback from '../../components/CountdownFallback';
 
 const DELAY_SECONDS = 2;
 

@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import Button from '../components/Button';
-import Input from '../components/Input';
-import StatefulComponent from '../components/StatefulComponent';
-import StatelessComponent from '../components/StatelessComponent';
-import ClassComponent from '../components/ClassComponent';
+import Button from '../../components/Button';
+import Input from '../../components/Input';
+import StatefulComponent from '../../components/StatefulComponent';
+import StatelessComponent from '../../components/StatelessComponent';
+import ClassComponent from '../../components/ClassComponent';
 
 function DZ39() {
   const [inputValue, setInputValue] = useState('');
