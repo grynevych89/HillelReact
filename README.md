@@ -2,7 +2,7 @@
 
 ## Project Description
 
-Educational project demonstrating React concepts across multiple homework assignments: functional components with hooks, class-based components, controlled and uncontrolled forms, async data fetching, the `use()` hook with Suspense, Axios integration, and client-side routing with React Router.
+Educational project demonstrating React concepts across multiple homework assignments: functional components with hooks, class-based components, controlled and uncontrolled forms, async data fetching, the `use()` hook with Suspense, Axios integration, client-side routing with React Router, and global state management with React Context API.
 
 ## Technologies
 
@@ -76,26 +76,42 @@ http://localhost:5173
 - `Navbar` and `Footer` extracted into separate layout components
 - `useNavigate(-1)` for browser-history back navigation
 
+### DZ 44 — React Context API
+
+- Global state management with `createContext` + `useContext` — no prop drilling
+- `AppContext.js` — context with default values; `AppProvider.jsx` — provider component
+- App wrapped in `AppProvider` — context available to the entire component tree
+- 3-level demo: `DZ44` (theme + toggle) → `UserList` (users list) → `UserCard` (theme styling)
+- Each level reads data directly from context without receiving props from its parent
+- `React.memo` on `UserList` and `UserCard` to prevent unnecessary re-renders
+
 ## Project Structure
 
 ```
 src/
+├── context/
+│   ├── AppContext.js     — createContext + default values
+│   └── AppProvider.jsx  — context provider component
 ├── layouts/
-│   ├── Layout.jsx       — shared page wrapper
-│   ├── Navbar.jsx       — navigation with NavLinks
-│   └── Footer.jsx       — copyright + site link
+│   ├── Layout.jsx        — shared page wrapper
+│   ├── Navbar.jsx        — navigation with NavLinks
+│   └── Footer.jsx        — copyright + site link
 ├── pages/
-│   ├── Home.jsx         — /
-│   ├── About.jsx        — /about
-│   ├── Contact.jsx      — /contact
-│   ├── Homeworks.jsx    — /homeworks
+│   ├── Home.jsx          — /
+│   ├── About.jsx         — /about
+│   ├── Contact.jsx       — /contact
+│   ├── Homeworks.jsx     — /homeworks
 │   └── dz/
 │       ├── DZ39.jsx
 │       ├── DZ40.jsx
 │       ├── DZ41.jsx
 │       ├── DZ42.jsx
-│       └── DZ43.jsx
-├── components/          — reusable UI components
+│       ├── DZ43.jsx
+│       └── dz44/
+│           ├── DZ44.jsx      — Level 1
+│           ├── UserList.jsx  — Level 2
+│           └── UserCard.jsx  — Level 3
+├── components/           — reusable UI components
 │   ├── AccordionSection.jsx
 │   ├── Button.jsx
 │   ├── ClassComponent.jsx
@@ -109,7 +125,7 @@ src/
 │   ├── StatefulComponent.jsx
 │   ├── StatelessComponent.jsx
 │   └── UncontrolledForm.jsx
-├── router.jsx           — createBrowserRouter config
-├── App.jsx              — RouterProvider entry point
+├── router.jsx            — createBrowserRouter config
+├── App.jsx               — AppProvider + RouterProvider entry point
 └── App.css
 ```
