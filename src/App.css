@@ -705,6 +705,10 @@ h4 {
   min-width: 3.5ch;
 }
 
+.back-btn {
+  margin-bottom: 20px;
+}
+
 .refresh-btn {
   margin-top: 12px;
   padding: 10px 22px;
@@ -753,4 +757,102 @@ h4 {
   font-weight: 600;
   color: #667eea;
   margin-right: 6px;
+}
+
+/* DZ43 — React Router */
+.router-nav {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.router-link {
+  padding: 10px 22px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #667eea;
+  background: #f0f2ff;
+  text-decoration: none;
+  border: 2px solid #d0d7ff;
+  transition: all 0.2s;
+}
+
+.router-link:hover {
+  background: #e0e4ff;
+}
+
+.router-link--active {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-color: transparent;
+}
+
+.router-page {
+  padding: 20px;
+  background: white;
+  border-radius: 10px;
+  border: 1px solid #e0e0e0;
+}
+
+.router-page h2 {
+  margin-bottom: 12px;
+  color: #333;
+}
+
+.router-page p {
+  color: #666;
+  line-height: 1.6;
+}
+
+.inline-code {
+  background: #f0f0f0;
+  padding: 2px 6px;
+  border-radius: 4px;
+  color: #764ba2;
+  font-family: monospace;
+}
+
+.dz-description {
+  color: #444;
+  margin-bottom: 12px;
+}
+
+.dz-list {
+  margin-bottom: 20px;
+}
+
+.dz-structure-title {
+  color: #555;
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+
+.dz-structure {
+  background: #2d3748;
+  color: #e2e8f0;
+  padding: 16px;
+  border-radius: 8px;
+  font-size: 13px;
+  line-height: 1.6;
+  overflow-x: auto;
+}
+
+.footer {
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #e0e0e0;
+  text-align: center;
+  font-size: 14px;
+  color: #999;
+}
+
+.footer a {
+  color: #667eea;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.footer a:hover {
+  text-decoration: underline;
 }

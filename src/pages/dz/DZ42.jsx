@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import DataFetcher from '../components/DataFetcher';
+import DataFetcher from '../../components/DataFetcher';
 
 const TOTAL_USERS = 10;
 
