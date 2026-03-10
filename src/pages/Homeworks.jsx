@@ -6,8 +6,10 @@ import DZ40 from './dz/DZ40';
 import DZ41 from './dz/DZ41';
 import DZ42 from './dz/DZ42';
 import DZ43 from './dz/DZ43';
+import DZ44 from './dz/dz44/DZ44';
 
 const sections = [
+  { key: 'dz44', title: 'DZ 44 — React Context API', Component: DZ44 },
   { key: 'dz43', title: 'DZ 43 — React Router: BrowserRouter, NavLink, createBrowserRouter', Component: DZ43 },
   { key: 'dz42', title: 'DZ 42 — useEffect + Axios', Component: DZ42 },
   { key: 'dz41', title: 'DZ 41 — use() hook with Promise', Component: DZ41 },
@@ -16,7 +18,7 @@ const sections = [
 ];
 
 function Homeworks() {
-  const [openSections, setOpenSections] = useState(['dz43']);
+  const [openSections, setOpenSections] = useState(['dz44']);
   const navigate = useNavigate();
 
   const toggle = (key) =>
