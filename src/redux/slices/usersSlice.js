@@ -1,0 +1,20 @@
+import { createSlice } from '@reduxjs/toolkit';
+
+const initialState = {
+  list: [
+    { id: 1, name: 'Alice Johnson', role: 'Frontend Developer', email: 'alice@example.com' },
+    { id: 2, name: 'Bob Smith', role: 'Backend Developer', email: 'bob@example.com' },
+    { id: 3, name: 'Carol White', role: 'UI/UX Designer', email: 'carol@example.com' },
+    { id: 4, name: 'David Brown', role: 'DevOps Engineer', email: 'david@example.com' },
+  ],
+};
+
+const usersSlice = createSlice({
+  name: 'users',
+  initialState,
+  reducers: {},
+});
+
+export const selectUsers = (state) => state.users.list;
+
+export default usersSlice.reducer;

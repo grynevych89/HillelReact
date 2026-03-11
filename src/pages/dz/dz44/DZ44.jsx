@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { AppContext } from '../../../context/AppContext';
-import UserList from './UserList';
+import UserListContext from './UserListContext';
 
 function DZ44() {
   const { theme, toggleTheme } = useContext(AppContext);
@@ -22,7 +22,7 @@ function DZ44() {
         <span className="context-level__reads">reads: <code className="inline-code">theme</code>, <code className="inline-code">toggleTheme</code></span>
 
         {/* Level 2 — UserList reads from context directly, not from DZ44 props */}
-        <UserList />
+        <UserListContext />
       </div>
     </div>
   );
