@@ -2,12 +2,13 @@
 
 ## Project Description
 
-Educational project demonstrating React concepts across multiple homework assignments: functional components with hooks, class-based components, controlled and uncontrolled forms, async data fetching, the `use()` hook with Suspense, Axios integration, client-side routing with React Router, and global state management with React Context API.
+Educational project demonstrating React concepts across multiple homework assignments: functional components with hooks, class-based components, controlled and uncontrolled forms, async data fetching, the `use()` hook with Suspense, Axios integration, client-side routing with React Router, global state management with React Context API, and Redux Toolkit integration.
 
 ## Technologies
 
 - React 19
 - React Router 7
+- Redux Toolkit + React Redux
 - Vite
 - Axios
 - JavaScript/JSX
@@ -25,7 +26,7 @@ cd HillelReact
 2. Install dependencies:
 
 ```bash
-npm install
+npm install --include=dev
 ```
 
 3. Run the project:
@@ -81,37 +82,56 @@ http://localhost:5173
 - Global state management with `createContext` + `useContext` — no prop drilling
 - `AppContext.js` — context with default values; `AppProvider.jsx` — provider component
 - App wrapped in `AppProvider` — context available to the entire component tree
-- 3-level demo: `DZ44` (theme + toggle) → `UserList` (users list) → `UserCard` (theme styling)
+- 3-level demo: `DZ44` (theme + toggle) → `UserListContext` (users list) → `UserCardContext` (theme styling)
 - Each level reads data directly from context without receiving props from its parent
-- `React.memo` on `UserList` and `UserCard` to prevent unnecessary re-renders
+- `React.memo` on `UserListContext` and `UserCardContext` to prevent unnecessary re-renders
+
+### DZ 45 — Redux Toolkit
+
+- Refactored from React Context (DZ44) to Redux Toolkit
+- `configureStore` with two slices: `themeSlice` (toggle light/dark) and `usersSlice` (team list)
+- `createSlice` for automatic generation of reducers and actions
+- Selectors (`selectTheme`, `selectUsers`) for optimized state access
+- Components use `useSelector` to read state and `useDispatch` to trigger actions
+- App wrapped in Redux `Provider` alongside existing `AppProvider`
+- 3-level demo: `DZ45` → `UserListRedux` → `UserCardRedux` — same architecture as DZ44 but via Redux
 
 ## Project Structure
 
 ```
 src/
 ├── context/
-│   ├── AppContext.js     — createContext + default values
-│   └── AppProvider.jsx  — context provider component
+│   ├── AppContext.js          — createContext + default values
+│   └── AppProvider.jsx       — context provider component
+├── redux/
+│   ├── store.js              — configureStore
+│   └── slices/
+│       ├── themeSlice.js     — theme toggle action + selectTheme selector
+│       └── usersSlice.js     — users list + selectUsers selector
 ├── layouts/
-│   ├── Layout.jsx        — shared page wrapper
-│   ├── Navbar.jsx        — navigation with NavLinks
-│   └── Footer.jsx        — copyright + site link
+│   ├── Layout.jsx            — shared page wrapper
+│   ├── Navbar.jsx            — navigation with NavLinks
+│   └── Footer.jsx            — copyright + site link
 ├── pages/
-│   ├── Home.jsx          — /
-│   ├── About.jsx         — /about
-│   ├── Contact.jsx       — /contact
-│   ├── Homeworks.jsx     — /homeworks
+│   ├── Home.jsx              — /
+│   ├── About.jsx             — /about
+│   ├── Contact.jsx           — /contact
+│   ├── Homeworks.jsx         — /homeworks
 │   └── dz/
 │       ├── DZ39.jsx
 │       ├── DZ40.jsx
 │       ├── DZ41.jsx
 │       ├── DZ42.jsx
 │       ├── DZ43.jsx
-│       └── dz44/
-│           ├── DZ44.jsx      — Level 1
-│           ├── UserList.jsx  — Level 2
-│           └── UserCard.jsx  — Level 3
-├── components/           — reusable UI components
+│       ├── dz44/
+│       │   ├── DZ44.jsx              — Level 1 (Context)
+│       │   ├── UserListContext.jsx   — Level 2 (Context)
+│       │   └── UserCardContext.jsx   — Level 3 (Context)
+│       └── dz45/
+│           ├── DZ45.jsx              — Level 1 (Redux)
+│           ├── UserListRedux.jsx     — Level 2 (Redux)
+│           └── UserCardRedux.jsx     — Level 3 (Redux)
+├── components/               — reusable UI components
 │   ├── AccordionSection.jsx
 │   ├── Button.jsx
 │   ├── ClassComponent.jsx
@@ -125,7 +145,7 @@ src/
 │   ├── StatefulComponent.jsx
 │   ├── StatelessComponent.jsx
 │   └── UncontrolledForm.jsx
-├── router.jsx            — createBrowserRouter config
-├── App.jsx               — AppProvider + RouterProvider entry point
+├── router.jsx                — createBrowserRouter config
+├── App.jsx                   — Provider + AppProvider + RouterProvider
 └── App.css
 ```

@@ -1,6 +1,6 @@
 import { memo, useContext } from 'react';
 import { AppContext } from '../../../context/AppContext';
-import UserCard from './UserCard';
+import UserCardContext from './UserCardContext';
 
 const UserList = memo(function UserList() {
   const { users, theme } = useContext(AppContext);
@@ -12,7 +12,7 @@ const UserList = memo(function UserList() {
       <h3 className="user-list__title">Team Members</h3>
       <ul className="user-list__items">
         {users.map((user) => (
-          <UserCard key={user.id} user={user} />
+          <UserCardContext key={user.id} user={user} />
         ))}
       </ul>
     </div>
