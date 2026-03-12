@@ -1014,3 +1014,128 @@ h4 {
 .footer a:hover {
   text-decoration: underline;
 }
+
+/* ── DZ47 ─────────────────────────────────────────── */
+
+.dz47 {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.dz47__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+@media (max-width: 768px) {
+  .dz47__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.dz47__column {
+  background: #f8f9ff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.dz47__title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #2d3748;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dz47__badge {
+  font-size: 11px;
+  font-weight: 600;
+  background: #667eea;
+  color: white;
+  padding: 2px 8px;
+  border-radius: 20px;
+}
+
+.dz47__result {
+  background: #1a202c;
+  color: #68d391;
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-size: 12px;
+  line-height: 1.6;
+  margin: 0;
+  overflow-x: auto;
+}
+
+.dz47-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.dz47-form__field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.dz47-form__label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #4a5568;
+}
+
+.dz47-form__input {
+  padding: 8px 12px;
+  border: 1.5px solid #cbd5e0;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #2d3748;
+  background: white;
+  transition: border-color 0.2s;
+  outline: none;
+}
+
+.dz47-form__input:focus {
+  border-color: #667eea;
+}
+
+.dz47-form__input--error {
+  border-color: #e53e3e;
+}
+
+.dz47-form__error {
+  font-size: 12px;
+  color: #e53e3e;
+  font-weight: 500;
+}
+
+.dz47-form__submit {
+  margin-top: 4px;
+  padding: 10px;
+  background: #667eea;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.dz47-form__submit:hover {
+  background: #5a67d8;
+}
+
+.dz47-form__submit:disabled {
+  background: #a0aec0;
+  cursor: not-allowed;
+}
