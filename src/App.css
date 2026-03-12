@@ -1218,3 +1218,85 @@ h4 {
     font-size: 36px;
   }
 }
+
+/* DZ49 — UserProfile + TestRunner */
+.dz49__layout {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+  align-items: flex-start;
+}
+
+.user-profile {
+  padding: 16px 20px;
+  background: #f8f9fa;
+  border-radius: 10px;
+  border-left: 4px solid #667eea;
+  min-width: 220px;
+}
+
+.user-profile h3 {
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.user-profile p {
+  font-size: 14px;
+  color: #555;
+  margin-top: 6px;
+}
+
+.test-runner {
+  flex: 1;
+  min-width: 260px;
+  padding: 16px 20px;
+  background: #f8f9fa;
+  border-radius: 10px;
+  border-left: 4px solid #764ba2;
+}
+
+.test-runner h4 {
+  margin-bottom: 12px;
+  color: #333;
+}
+
+.test-runner__list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.test-runner__item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #444;
+}
+
+.test-runner__icon {
+  font-size: 16px;
+  font-weight: 700;
+  width: 20px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.test-runner__icon.pass { color: #2e7d32; }
+.test-runner__icon.fail { color: #c62828; }
+.test-runner__icon.pending { color: #aaa; }
+
+.test-runner__summary {
+  margin-top: 14px;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.test-runner__summary.pass { color: #2e7d32; }
+.test-runner__summary.fail { color: #c62828; }
+
+.test-runner__hidden {
+  display: none;
+}

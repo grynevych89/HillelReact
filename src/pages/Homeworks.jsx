@@ -11,8 +11,10 @@ import DZ45 from './dz/dz45/DZ45';
 import DZ46 from './dz/dz46/DZ46';
 import DZ47 from './dz/dz47/DZ47';
 import DZ48 from './dz/dz48/DZ48';
+import DZ49 from './dz/dz49/DZ49';
 
 const sections = [
+  { key: 'dz49', title: 'DZ 49 — Vitest: Testing Async Logic', Component: DZ49 },
   { key: 'dz48', title: 'DZ 48 — Material UI', Component: DZ48 },
   { key: 'dz47', title: 'DZ 47 — Forms: Formik + Yup / React Hook Form', Component: DZ47 },
   { key: 'dz46', title: 'DZ 46 — Redux Toolkit: Async Thunk', Component: DZ46 },
@@ -26,7 +28,7 @@ const sections = [
 ];
 
 function Homeworks() {
-  const [openSections, setOpenSections] = useState(['dz48']);
+  const [openSections, setOpenSections] = useState(['dz49']);
   const navigate = useNavigate();
 
   const toggle = (key) =>
