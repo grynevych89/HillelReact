@@ -2,13 +2,15 @@
 
 ## Project Description
 
-Educational project demonstrating React concepts across multiple homework assignments: functional components with hooks, class-based components, controlled and uncontrolled forms, async data fetching, the `use()` hook with Suspense, Axios integration, client-side routing with React Router, global state management with React Context API, Redux Toolkit with static data, and Redux Toolkit with async thunks.
+Educational project demonstrating React concepts across multiple homework assignments: functional components with hooks, class-based components, controlled and uncontrolled forms, async data fetching, the `use()` hook with Suspense, Axios integration, client-side routing with React Router, global state management with React Context API, Redux Toolkit with static data, Redux Toolkit with async thunks, and form validation with Formik+Yup and React Hook Form.
 
 ## Technologies
 
 - React 19
 - React Router 7
 - Redux Toolkit + React Redux
+- Formik + Yup
+- React Hook Form
 - Vite
 - Axios
 - JavaScript/JSX
@@ -106,6 +108,15 @@ http://localhost:5173
 - `UserListAsync` renders loading / error (with Retry button) / success states
 - All async state lives in the slice — components stay clean and stateless
 
+### DZ 47 — Form Validation: Formik + Yup vs React Hook Form
+
+- Two identical registration forms side by side — same fields, different libraries
+- **Formik + Yup**: schema-based validation with `useFormik` and `Yup.object` — declarative, colocated rules
+- **React Hook Form**: built-in constraint rules via `register()` — minimal re-renders, no external schema library
+- Fields: Full Name, Email, Password, Phone, Date of Birth — all fully validated
+- Shared validation rules extracted to `src/constants.js`: `REGEX`, `LIMITS`, `validatePhone()`, `getMaxBirthdate()`
+- Both forms validate on blur/submit, show inline error messages, and reset on successful submission
+
 ## Project Structure
 
 ```
@@ -142,10 +153,14 @@ src/
 │       │   ├── DZ45.jsx              — Level 1 (Redux static)
 │       │   ├── UserListRedux.jsx     — Level 2 (Redux static)
 │       │   └── UserCardRedux.jsx     — Level 3 (Redux static)
-│       └── dz46/
-│           ├── DZ46.jsx              — Level 1 (Redux async)
-│           ├── UserListAsync.jsx     — Level 2 (Redux async, handles status/error)
-│           └── UserCardAsync.jsx     — Level 3 (Redux async)
+│       ├── dz46/
+│       │   ├── DZ46.jsx              — Level 1 (Redux async)
+│       │   ├── UserListAsync.jsx     — Level 2 (Redux async, handles status/error)
+│       │   └── UserCardAsync.jsx     — Level 3 (Redux async)
+│       └── dz47/
+│           ├── DZ47.jsx              — side-by-side layout + submitted data display
+│           ├── FormFormik.jsx        — Formik + Yup schema validation
+│           └── FormRHF.jsx           — React Hook Form built-in rules
 ├── components/               — reusable UI components
 │   ├── AccordionSection.jsx
 │   ├── Button.jsx
@@ -160,6 +175,7 @@ src/
 │   ├── StatefulComponent.jsx
 │   ├── StatelessComponent.jsx
 │   └── UncontrolledForm.jsx
+├── constants.js              — shared constants: API_BASE_URL, REGEX, LIMITS, validation helpers
 ├── router.jsx                — createBrowserRouter config
 ├── App.jsx                   — Provider + AppProvider + RouterProvider
 └── App.css

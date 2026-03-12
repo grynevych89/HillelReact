@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
+import { API_BASE_URL } from '../constants';
 
-const API_URL = 'https://jsonplaceholder.typicode.com/posts?_limit=5';
+const API_URL = `${API_BASE_URL}/posts?_limit=5`;
 
 function PostsFeed() {
   const [posts, setPosts] = useState([]);

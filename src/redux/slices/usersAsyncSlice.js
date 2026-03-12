@@ -1,7 +1,8 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { API_BASE_URL } from '../../constants';
 
 export const fetchUsers = createAsyncThunk('usersAsync/fetchUsers', async () => {
-  const response = await fetch('https://jsonplaceholder.typicode.com/users');
+  const response = await fetch(`${API_BASE_URL}/users`);
   if (!response.ok) throw new Error('Failed to fetch users');
   return response.json();
 });

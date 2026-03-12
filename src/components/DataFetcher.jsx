@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { API_BASE_URL } from '../constants';
 
 function DataFetcher({ id }) {
   const [data, setData] = useState(null);
@@ -15,7 +16,7 @@ function DataFetcher({ id }) {
 
       try {
         const { data: user } = await axios.get(
-          `https://jsonplaceholder.typicode.com/users/${id}`
+          `${API_BASE_URL}/users/${id}`
         );
         if (!cancelled) setData(user);
       } catch (err) {
