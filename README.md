@@ -2,7 +2,7 @@
 
 ## Project Description
 
-Educational project demonstrating React concepts across multiple homework assignments: functional components with hooks, class-based components, controlled and uncontrolled forms, async data fetching, the `use()` hook with Suspense, Axios integration, client-side routing with React Router, global state management with React Context API, and Redux Toolkit integration.
+Educational project demonstrating React concepts across multiple homework assignments: functional components with hooks, class-based components, controlled and uncontrolled forms, async data fetching, the `use()` hook with Suspense, Axios integration, client-side routing with React Router, global state management with React Context API, Redux Toolkit with static data, and Redux Toolkit with async thunks.
 
 ## Technologies
 
@@ -86,15 +86,25 @@ http://localhost:5173
 - Each level reads data directly from context without receiving props from its parent
 - `React.memo` on `UserListContext` and `UserCardContext` to prevent unnecessary re-renders
 
-### DZ 45 — Redux Toolkit
+### DZ 45 — Redux Toolkit: Static Data
 
 - Refactored from React Context (DZ44) to Redux Toolkit
-- `configureStore` with two slices: `themeSlice` (toggle light/dark) and `usersSlice` (team list)
+- `configureStore` with two slices: `themeSlice` (toggle light/dark) and `usersSlice` (static team list)
 - `createSlice` for automatic generation of reducers and actions
 - Selectors (`selectTheme`, `selectUsers`) for optimized state access
 - Components use `useSelector` to read state and `useDispatch` to trigger actions
 - App wrapped in Redux `Provider` alongside existing `AppProvider`
 - 3-level demo: `DZ45` → `UserListRedux` → `UserCardRedux` — same architecture as DZ44 but via Redux
+
+### DZ 46 — Redux Toolkit: Async Thunk
+
+- Refactored from static Redux data (DZ45) to async data fetching via `createAsyncThunk`
+- `usersAsyncSlice` — separate slice with `list`, `status` (`idle/loading/succeeded/failed`), `error`
+- `fetchUsers` thunk fetches real users from `jsonplaceholder.typicode.com/users`
+- `extraReducers` handles `pending`, `fulfilled`, `rejected` lifecycle actions
+- Fetch triggered once via `useEffect` only when `status === 'idle'` — prevents duplicate requests
+- `UserListAsync` renders loading / error (with Retry button) / success states
+- All async state lives in the slice — components stay clean and stateless
 
 ## Project Structure
 
@@ -107,7 +117,8 @@ src/
 │   ├── store.js              — configureStore
 │   └── slices/
 │       ├── themeSlice.js     — theme toggle action + selectTheme selector
-│       └── usersSlice.js     — users list + selectUsers selector
+│       ├── usersSlice.js     — static users list + selectUsers selector
+│       └── usersAsyncSlice.js — async thunk + status/error + selectAsyncUsers
 ├── layouts/
 │   ├── Layout.jsx            — shared page wrapper
 │   ├── Navbar.jsx            — navigation with NavLinks
@@ -127,10 +138,14 @@ src/
 │       │   ├── DZ44.jsx              — Level 1 (Context)
 │       │   ├── UserListContext.jsx   — Level 2 (Context)
 │       │   └── UserCardContext.jsx   — Level 3 (Context)
-│       └── dz45/
-│           ├── DZ45.jsx              — Level 1 (Redux)
-│           ├── UserListRedux.jsx     — Level 2 (Redux)
-│           └── UserCardRedux.jsx     — Level 3 (Redux)
+│       ├── dz45/
+│       │   ├── DZ45.jsx              — Level 1 (Redux static)
+│       │   ├── UserListRedux.jsx     — Level 2 (Redux static)
+│       │   └── UserCardRedux.jsx     — Level 3 (Redux static)
+│       └── dz46/
+│           ├── DZ46.jsx              — Level 1 (Redux async)
+│           ├── UserListAsync.jsx     — Level 2 (Redux async, handles status/error)
+│           └── UserCardAsync.jsx     — Level 3 (Redux async)
 ├── components/               — reusable UI components
 │   ├── AccordionSection.jsx
 │   ├── Button.jsx
