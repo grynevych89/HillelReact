@@ -8,9 +8,11 @@ import DZ42 from './dz/DZ42';
 import DZ43 from './dz/DZ43';
 import DZ44 from './dz/dz44/DZ44';
 import DZ45 from './dz/dz45/DZ45';
+import DZ46 from './dz/dz46/DZ46';
 
 const sections = [
-  { key: 'dz45', title: 'DZ 45 — Redux Toolkit', Component: DZ45 },
+  { key: 'dz46', title: 'DZ 46 — Redux Toolkit: Async Thunk', Component: DZ46 },
+  { key: 'dz45', title: 'DZ 45 — Redux Toolkit: Static Data', Component: DZ45 },
   { key: 'dz44', title: 'DZ 44 — React Context API', Component: DZ44 },
   { key: 'dz43', title: 'DZ 43 — React Router: BrowserRouter, NavLink, createBrowserRouter', Component: DZ43 },
   { key: 'dz42', title: 'DZ 42 — useEffect + Axios', Component: DZ42 },
@@ -20,7 +22,7 @@ const sections = [
 ];
 
 function Homeworks() {
-  const [openSections, setOpenSections] = useState(['dz45']);
+  const [openSections, setOpenSections] = useState(['dz46']);
   const navigate = useNavigate();
 
   const toggle = (key) =>
