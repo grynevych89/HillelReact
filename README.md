@@ -2,7 +2,7 @@
 
 ## Project Description
 
-Educational project demonstrating React concepts across multiple homework assignments: functional components with hooks, class-based components, controlled and uncontrolled forms, async data fetching, the `use()` hook with Suspense, Axios integration, client-side routing with React Router, global state management with React Context API, Redux Toolkit with static data, Redux Toolkit with async thunks, form validation with Formik+Yup and React Hook Form, UI component libraries with Material UI, unit testing async components with Vitest + React Testing Library, and performance optimization via memoization with `useMemo`, `useCallback`, and `React.memo`.
+Educational project demonstrating React concepts across multiple homework assignments: functional components with hooks, class-based components, controlled and uncontrolled forms, async data fetching, the `use()` hook with Suspense, Axios integration, client-side routing with React Router, global state management with React Context API, Redux Toolkit with static data, Redux Toolkit with async thunks, form validation with Formik+Yup and React Hook Form, UI component libraries with Material UI, unit testing async components with Vitest + React Testing Library, performance optimization via memoization with `useMemo`, `useCallback`, and `React.memo`, and integration of specialized React libraries — React Icons, React Toastify, and React Idle Timer.
 
 ## Technologies
 
@@ -13,6 +13,7 @@ Educational project demonstrating React concepts across multiple homework assign
 - React Hook Form
 - Material UI (MUI v7)
 - Vitest + React Testing Library
+- React Icons + React Toastify + React Idle Timer
 - Vite
 - Axios
 - JavaScript/JSX
@@ -147,6 +148,16 @@ http://localhost:5173
 - `useRef` — tracks render count per row without triggering re-renders; the *renders: N* badge makes optimization visible
 - Clicking the unrelated counter re-renders the parent but product rows do **not** re-render — proven by stable render counts
 
+### DZ 51 — Practical React: React Icons, Toastify, Idle Timer
+
+- Task Manager app integrating three specialized React libraries
+- **React Icons** (`react-icons/fi`) — Feather Icons SVG set used for all interactive controls: add, check, delete, restore, settings, and modal actions
+- **React Toastify** — contextual non-blocking notifications: `toast.success` (add/restore), `toast.info` (mark done), `toast.warning` (revert to active), `toast.error` (delete)
+- **React Idle Timer** — inactivity detection via `useIdleTimer` with configurable `timeout` (slider, 5–120 s) and `throttle: 500ms`; when enabled, shows a live countdown bar and opens a confirmation modal on idle
+- Soft-delete pattern: tasks have `status: active | done | deleted` — deleted items are preserved with restore and permanent-purge options
+- Filter tabs (All / Active / Done / Deleted) with live count badges; auto-sort active → done → deleted
+- Progress bar showing completion ratio (done / active+done)
+
 ## Project Structure
 
 ```
@@ -198,10 +209,16 @@ src/
 │       ├── dz49/
 │       │   ├── DZ49.jsx              — page layout + description
 │       │   └── UserProfile.jsx       — fetches random user, handles loading/success/error
-│       └── dz50/
-│           ├── DZ50.jsx              — description + renders MemoDemo
-│           ├── MemoDemo.jsx          — useMemo (filter + cart total) + useCallback (toggle)
-│           └── ProductItem.jsx       — React.memo wrapped memoized product row
+│       ├── dz50/
+│       │   ├── DZ50.jsx              — description + renders MemoDemo
+│       │   ├── MemoDemo.jsx          — useMemo (filter + cart total) + useCallback (toggle)
+│       │   └── ProductItem.jsx       — React.memo wrapped memoized product row
+│       └── dz51/
+│           ├── DZ51.jsx              — Task Manager: state, filters, progress, idle settings
+│           ├── TodoForm.jsx          — controlled input with FiPlus icon
+│           ├── TodoItem.jsx          — renders one task card (active/done/deleted states)
+│           ├── IdleWarning.jsx       — useIdleTimer logic: countdown tick, pause, reset
+│           └── IdleModal.jsx         — modal overlay shown on idle with elapsed timer
 ├── tests/
 │   ├── dz49.scenarios.js     — shared test scenarios (fetchFn mocks + expectedText)
 │   ├── unit/
