@@ -2,7 +2,7 @@
 
 ## Project Description
 
-Educational project demonstrating React concepts across multiple homework assignments: functional components with hooks, class-based components, controlled and uncontrolled forms, async data fetching, the `use()` hook with Suspense, Axios integration, client-side routing with React Router, global state management with React Context API, Redux Toolkit with static data, Redux Toolkit with async thunks, form validation with Formik+Yup and React Hook Form, and UI component libraries with Material UI.
+Educational project demonstrating React concepts across multiple homework assignments: functional components with hooks, class-based components, controlled and uncontrolled forms, async data fetching, the `use()` hook with Suspense, Axios integration, client-side routing with React Router, global state management with React Context API, Redux Toolkit with static data, Redux Toolkit with async thunks, form validation with Formik+Yup and React Hook Form, UI component libraries with Material UI, and unit testing async components with Vitest + React Testing Library.
 
 ## Technologies
 
@@ -12,6 +12,7 @@ Educational project demonstrating React concepts across multiple homework assign
 - Formik + Yup
 - React Hook Form
 - Material UI (MUI v7)
+- Vitest + React Testing Library
 - Vite
 - Axios
 - JavaScript/JSX
@@ -126,6 +127,17 @@ http://localhost:5173
 - **ContactForm** — `TextField`, `Select` with `MenuItem`, `Button`, `Alert` for success feedback; custom validation (name: required; email: required + `REGEX.email` from `constants.js`)
 - `Paper` as a styled container, `Box` for layout, `sx` prop for scoped styles — no custom CSS needed
 
+### DZ 49 — Vitest + React Testing Library
+
+- **Unit testing async React components** with Vitest + React Testing Library
+- `UserProfile` fetches a random user (id 1–10) from `jsonplaceholder.typicode.com` and handles loading / success / error states
+- Tests use **dependency injection** via `fetchFn` prop instead of `vi.mock(axios)` — cleaner, framework-agnostic, no module-level side effects
+- `MOCK_USER` (shared constant) and `DZ49_SCENARIOS` (shared scenarios) defined once and reused in both unit tests and the visual TestRunner
+- Tests organized into `src/tests/unit/` (Vitest) and `src/tests/components/` (visual React TestRunner)
+- Visual `TestRunner` renders each scenario hidden in the DOM and checks the output — results shown live on the page
+- Unit tests verify component logic in isolation
+- Run tests: `npm test` | UI mode: `npm run test:ui` | Coverage: `npm run coverage`
+
 ## Project Structure
 
 ```
@@ -170,10 +182,19 @@ src/
 │       │   ├── DZ47.jsx              — side-by-side layout + submitted data display
 │       │   ├── FormFormik.jsx        — Formik + Yup schema validation
 │       │   └── FormRHF.jsx           — React Hook Form built-in rules
-│       └── dz48/
-│           ├── DZ48.jsx              — Grid layout with cards + contact form
-│           ├── ProfileCard.jsx       — MUI Card + Avatar + Chip
-│           └── ContactForm.jsx       — MUI TextField + Select + Alert
+│       ├── dz48/
+│       │   ├── DZ48.jsx              — Grid layout with cards + contact form
+│       │   ├── ProfileCard.jsx       — MUI Card + Avatar + Chip
+│       │   └── ContactForm.jsx       — MUI TextField + Select + Alert
+│       └── dz49/
+│           ├── DZ49.jsx              — page layout + description
+│           └── UserProfile.jsx       — fetches random user, handles loading/success/error
+├── tests/
+│   ├── dz49.scenarios.js     — shared test scenarios (fetchFn mocks + expectedText)
+│   ├── unit/
+│   │   └── UserProfile.test.jsx — Vitest unit tests (dependency injection, no vi.mock)
+│   └── components/
+│       └── TestRunner.jsx    — visual test runner rendered on DZ49 page
 ├── components/               — reusable UI components
 │   ├── AccordionSection.jsx
 │   ├── Button.jsx
@@ -188,7 +209,7 @@ src/
 │   ├── StatefulComponent.jsx
 │   ├── StatelessComponent.jsx
 │   └── UncontrolledForm.jsx
-├── constants.js              — shared constants: API_BASE_URL, REGEX, LIMITS, validation helpers
+├── constants.js              — shared constants: API_BASE_URL, MOCK_USER, REGEX, LIMITS, validation helpers
 ├── router.jsx                — createBrowserRouter config
 ├── App.jsx                   — Provider + AppProvider + RouterProvider
 └── App.css

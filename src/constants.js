@@ -1,5 +1,14 @@
 export const API_BASE_URL = 'https://jsonplaceholder.typicode.com';
 
+export const MOCK_USER = {
+  id: 1,
+  name: 'Leanne Graham',
+  email: 'Sincere@april.biz',
+  phone: '1-770-736-0988 x56442',
+  website: 'hildegard.org',
+};
+
+
 export const REGEX = {
   name: /^[A-Za-z][A-Za-z' -]*[A-Za-z]$|^[A-Za-z]{2,}$/,
   email: /^[A-Za-z0-9._%+'-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/,
