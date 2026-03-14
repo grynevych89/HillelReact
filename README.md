@@ -2,7 +2,7 @@
 
 ## Project Description
 
-Educational project demonstrating React concepts across multiple homework assignments: functional components with hooks, class-based components, controlled and uncontrolled forms, async data fetching, the `use()` hook with Suspense, Axios integration, client-side routing with React Router, global state management with React Context API, Redux Toolkit with static data, Redux Toolkit with async thunks, and form validation with Formik+Yup and React Hook Form.
+Educational project demonstrating React concepts across multiple homework assignments: functional components with hooks, class-based components, controlled and uncontrolled forms, async data fetching, the `use()` hook with Suspense, Axios integration, client-side routing with React Router, global state management with React Context API, Redux Toolkit with static data, Redux Toolkit with async thunks, form validation with Formik+Yup and React Hook Form, and UI component libraries with Material UI.
 
 ## Technologies
 
@@ -11,6 +11,7 @@ Educational project demonstrating React concepts across multiple homework assign
 - Redux Toolkit + React Redux
 - Formik + Yup
 - React Hook Form
+- Material UI (MUI v7)
 - Vite
 - Axios
 - JavaScript/JSX
@@ -117,6 +118,14 @@ http://localhost:5173
 - Shared validation rules extracted to `src/constants.js`: `REGEX`, `LIMITS`, `validatePhone()`, `getMaxBirthdate()`
 - Both forms validate on blur/submit, show inline error messages, and reset on successful submission
 
+### DZ 48 — Material UI Integration
+
+- Integrated `@mui/material` v7 into the project — responsive UI with pre-built components
+- **ProfileCard** — `Card` + `Avatar` + `Chip` + `Button` + MUI icons; 4 cards from Redux `usersSlice` in a responsive `Grid` (1 column on mobile → 2 on tablet → 4 on desktop)
+- Text overflow handled via MUI `noWrap` + `title` tooltip for long names and emails
+- **ContactForm** — `TextField`, `Select` with `MenuItem`, `Button`, `Alert` for success feedback; custom validation (name: required; email: required + `REGEX.email` from `constants.js`)
+- `Paper` as a styled container, `Box` for layout, `sx` prop for scoped styles — no custom CSS needed
+
 ## Project Structure
 
 ```
@@ -157,10 +166,14 @@ src/
 │       │   ├── DZ46.jsx              — Level 1 (Redux async)
 │       │   ├── UserListAsync.jsx     — Level 2 (Redux async, handles status/error)
 │       │   └── UserCardAsync.jsx     — Level 3 (Redux async)
-│       └── dz47/
-│           ├── DZ47.jsx              — side-by-side layout + submitted data display
-│           ├── FormFormik.jsx        — Formik + Yup schema validation
-│           └── FormRHF.jsx           — React Hook Form built-in rules
+│       ├── dz47/
+│       │   ├── DZ47.jsx              — side-by-side layout + submitted data display
+│       │   ├── FormFormik.jsx        — Formik + Yup schema validation
+│       │   └── FormRHF.jsx           — React Hook Form built-in rules
+│       └── dz48/
+│           ├── DZ48.jsx              — Grid layout with cards + contact form
+│           ├── ProfileCard.jsx       — MUI Card + Avatar + Chip
+│           └── ContactForm.jsx       — MUI TextField + Select + Alert
 ├── components/               — reusable UI components
 │   ├── AccordionSection.jsx
 │   ├── Button.jsx
