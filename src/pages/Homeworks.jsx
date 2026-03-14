@@ -13,8 +13,10 @@ import DZ47 from './dz/dz47/DZ47';
 import DZ48 from './dz/dz48/DZ48';
 import DZ49 from './dz/dz49/DZ49';
 import DZ50 from './dz/dz50/DZ50';
+import DZ51 from './dz/dz51/DZ51';
 
 const sections = [
+  { key: 'dz51', title: 'DZ 51 — Practical React: Icons, Toastify, Idle Timer', Component: DZ51 },
   { key: 'dz50', title: 'DZ 50 — Memoization: useMemo, useCallback, React.memo', Component: DZ50 },
   { key: 'dz49', title: 'DZ 49 — Vitest: Testing Async Logic', Component: DZ49 },
   { key: 'dz48', title: 'DZ 48 — Material UI', Component: DZ48 },
@@ -30,7 +32,7 @@ const sections = [
 ];
 
 function Homeworks() {
-  const [openSections, setOpenSections] = useState(['dz50']);
+  const [openSections, setOpenSections] = useState(['dz51']);
   const navigate = useNavigate();
 
   const toggle = (key) =>
