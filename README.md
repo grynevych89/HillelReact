@@ -2,7 +2,7 @@
 
 ## Project Description
 
-Educational project demonstrating React concepts across multiple homework assignments: functional components with hooks, class-based components, controlled and uncontrolled forms, async data fetching, the `use()` hook with Suspense, Axios integration, client-side routing with React Router, global state management with React Context API, Redux Toolkit with static data, Redux Toolkit with async thunks, form validation with Formik+Yup and React Hook Form, UI component libraries with Material UI, and unit testing async components with Vitest + React Testing Library.
+Educational project demonstrating React concepts across multiple homework assignments: functional components with hooks, class-based components, controlled and uncontrolled forms, async data fetching, the `use()` hook with Suspense, Axios integration, client-side routing with React Router, global state management with React Context API, Redux Toolkit with static data, Redux Toolkit with async thunks, form validation with Formik+Yup and React Hook Form, UI component libraries with Material UI, unit testing async components with Vitest + React Testing Library, and performance optimization via memoization with `useMemo`, `useCallback`, and `React.memo`.
 
 ## Technologies
 
@@ -138,6 +138,15 @@ http://localhost:5173
 - Unit tests verify component logic in isolation
 - Run tests: `npm test` | UI mode: `npm run test:ui` | Coverage: `npm run coverage`
 
+### DZ 50 — Memoization: useMemo, useCallback, React.memo
+
+- Product catalog demo with filter input and an unrelated counter for demonstrating memoization
+- `useMemo` — filters the product list only when the search input changes; also computes cart total
+- `useCallback` — keeps the `handleToggle` reference stable across parent re-renders
+- `React.memo` — wraps `ProductItem` so it skips re-render when its props have not changed
+- `useRef` — tracks render count per row without triggering re-renders; the *renders: N* badge makes optimization visible
+- Clicking the unrelated counter re-renders the parent but product rows do **not** re-render — proven by stable render counts
+
 ## Project Structure
 
 ```
@@ -186,9 +195,13 @@ src/
 │       │   ├── DZ48.jsx              — Grid layout with cards + contact form
 │       │   ├── ProfileCard.jsx       — MUI Card + Avatar + Chip
 │       │   └── ContactForm.jsx       — MUI TextField + Select + Alert
-│       └── dz49/
-│           ├── DZ49.jsx              — page layout + description
-│           └── UserProfile.jsx       — fetches random user, handles loading/success/error
+│       ├── dz49/
+│       │   ├── DZ49.jsx              — page layout + description
+│       │   └── UserProfile.jsx       — fetches random user, handles loading/success/error
+│       └── dz50/
+│           ├── DZ50.jsx              — description + renders MemoDemo
+│           ├── MemoDemo.jsx          — useMemo (filter + cart total) + useCallback (toggle)
+│           └── ProductItem.jsx       — React.memo wrapped memoized product row
 ├── tests/
 │   ├── dz49.scenarios.js     — shared test scenarios (fetchFn mocks + expectedText)
 │   ├── unit/
